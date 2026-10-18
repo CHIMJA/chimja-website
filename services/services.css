@@ -1,0 +1,113 @@
+/* Services-only additions; shared Website v1.2 styles remain unchanged. */
+.services-page { overflow-wrap: anywhere; }
+.services-page :focus-visible { outline: 3px solid var(--emerald); outline-offset: 5px; }
+.services-page .footer :focus-visible { outline-color: #8FCE94; }
+.services-page [id] { scroll-margin-top: 110px; }
+.services-page .site-header nav a { min-height: 44px; display: inline-flex; align-items: center; }
+.services-page .site-header nav a[aria-current] { color: var(--forest); text-decoration: underline; text-underline-offset: 6px; }
+.services-page .menu { min-height: 44px; }
+.services-hero { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(0, .8fr); gap: 64px; align-items: center; padding-top: 100px; padding-bottom: 110px; }
+.services-hero h1 { font: 600 clamp(42px, 5.1vw, 72px)/1.08 Sora, sans-serif; letter-spacing: -.055em; margin: 0; }
+.services-hero h1 span { color: var(--forest); }
+.services-lede { font-size: clamp(18px, 1.8vw, 23px); line-height: 1.7; color: #5D5D58; max-width: 720px; margin: 30px 0 0; }
+.engineering-note { border: 1px solid #D4DED1; border-radius: 28px; padding: 32px; background: #F0F3ED; }
+.engineering-note img { display: block; margin-bottom: 36px; }
+.engineering-note .kicker { font-size: 10px; line-height: 1.8; }
+.note-heading { font: 600 clamp(24px, 2.4vw, 32px)/1.3 Sora, sans-serif; letter-spacing: -.04em; }
+.engineering-note ul { list-style: none; padding: 0; margin: 30px 0; }
+.engineering-note li { padding: 14px 0; border-top: 1px solid #D4DED1; font-size: 14px; line-height: 1.6; }
+.note-footer { font-size: 12px; color: #555B51; line-height: 1.8; }
+.services-offerings, .services-work { background: #fff; }
+.services-page .build-card h3 { font-size: 26px; line-height: 1.3; margin-top: 42px; }
+.services-page .service-detail { color: var(--forest); font-size: 13px; line-height: 1.8; margin-top: 28px; }
+.expertise-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px; }
+.expertise-grid article { border-top: 2px solid var(--forest); padding-top: 20px; }
+.services-page h3 { font-family: Sora, sans-serif; letter-spacing: -.03em; }
+.expertise-grid h3 { font-size: 21px; }
+.expertise-grid p, .process-list p { color: #5F5F5A; line-height: 1.8; }
+.process-list { list-style: none; counter-reset: step; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 26px; }
+.process-list li { counter-increment: step; border-top: 1px solid #CDCDC7; padding-top: 24px; }
+.process-list li::before { content: "0" counter(step); font: 600 12px Sora, sans-serif; color: var(--forest); }
+.process-list h3 { font-size: 21px; margin-top: 28px; }
+.process-list p { font-size: 15px; }
+.services-why { background: #F0F1EC; }
+.services-page .principle h3 { font-size: 24px; margin: 0; font-weight: 600; }
+.services-page .principle-list { margin-top: 0; }
+.services-faq { max-width: 960px; }
+.services-faq details { border-top: 1px solid #CDCDC7; }
+.services-faq details:last-child { border-bottom: 1px solid #CDCDC7; }
+.services-faq summary { padding: 24px 8px; cursor: pointer; font-size: 19px; font-weight: 600; line-height: 1.6; }
+.services-faq details p { padding: 0 8px 24px; margin: 0; color: #5F5F5A; line-height: 1.8; max-width: 760px; }
+.services-page main p a, .services-inquiry a:not(.button) { color: var(--forest); text-underline-offset: 4px; }
+.services-inquiry { background: #EDF1E9; }
+.inquiry-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.2fr); gap: 80px; align-items: start; }
+.services-page .inquiry-grid h2 { font-size: clamp(38px, 4.5vw, 60px); }
+.inquiry-grid > div > p { line-height: 1.8; color: #53584F; }
+.inquiry-contact { margin: 36px 0; }
+.inquiry-contact strong { display: block; font-size: 16px; }
+.inquiry-contact a { display: inline-flex; align-items: center; min-height: 44px; font-size: clamp(19px, 2.4vw, 27px); font-weight: 600; }
+.form-notice { font-size: 14px; }
+.inquiry-panel { background: #fff; border: 1px solid #D4DED1; padding: 36px; border-radius: 26px; min-width: 0; }
+.form-status { margin: 0 0 26px; color: var(--forest); font-size: 11px; font-weight: 700; letter-spacing: .1em; line-height: 1.8; }
+.inquiry-panel fieldset { padding: 0; margin: 0; border: 0; min-width: 0; }
+.inquiry-panel legend { font: 600 22px Sora, sans-serif; padding: 0; }
+.field-note { font-size: 13px; color: #5F5F5A; margin: 18px 0 24px; }
+.field-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 18px; }
+.field { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.field-wide { grid-column: 1 / -1; }
+.field label { font-size: 14px; font-weight: 600; line-height: 1.6; }
+.field label span { font-weight: 400; color: #5F5F5A; }
+.field input, .field select, .field textarea { width: 100%; min-height: 48px; min-width: 0; padding: 12px; border: 1px solid #828A7D; border-radius: 8px; font: 16px/1.5 Inter, system-ui, sans-serif; background: #F5F6F2; color: #555B51; opacity: 1; -webkit-text-fill-color: #555B51; }
+.field input::placeholder { color: #62675C; opacity: 1; }
+.field textarea { resize: vertical; }
+.inquiry-panel button { margin-top: 28px; width: 100%; border: 0; font-family: inherit; }
+.inquiry-panel button:disabled { background: #E4E8DF; color: #53584F; cursor: not-allowed; }
+.services-global { text-align: center; padding-top: 110px; padding-bottom: 110px; }
+.services-global h2 { font: 600 clamp(36px, 4.5vw, 60px)/1.15 Sora, sans-serif; letter-spacing: -.05em; margin: 0; }
+.services-global > p:not(.kicker) { max-width: 650px; margin: 26px auto 32px; color: #5F5F5A; line-height: 1.8; font-size: 18px; }
+.services-page .footer-grid a { min-height: 44px; display: inline-flex; align-items: center; }
+@media (max-width: 1000px) { .services-hero { gap: 32px; } .inquiry-grid { gap: 36px; } .process-list { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 900px) {
+  .services-hero, .inquiry-grid { grid-template-columns: 1fr; }
+  .services-hero { padding-top: 64px; padding-bottom: 70px; }
+  .engineering-note { max-width: 580px; }
+  .expertise-grid { grid-template-columns: 1fr; gap: 24px; }
+}
+@media (max-width: 560px) {
+  .services-hero h1 { font-size: clamp(36px, 10vw, 48px); }
+  .services-hero .hero-actions .button { width: 100%; }
+  .engineering-note, .inquiry-panel { padding: 26px 20px; border-radius: 22px; }
+  .services-page .section h2 { font-size: 38px; }
+  .process-list, .field-grid { grid-template-columns: 1fr; }
+  .process-list h3 { margin-top: 16px; }
+  .services-global { padding-top: 80px; padding-bottom: 80px; }
+  .services-page .reutap-availability { line-height: 1.7; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .services-page *, .services-page *::before, .services-page *::after { scroll-behavior: auto; transition: none; animation: none; }
+  .services-page .reutap-download:hover { transform: none; }
+}
+
+/* Inquiry integration and services-scoped contrast corrections. */
+.services-page .num { color: var(--forest); }
+.services-page .footnote { color: #999B96; }
+.services-page .inquiry-honeypot { display: none; }
+.services-page .captcha-wrap { margin-top: 24px; min-width: 0; }
+.services-page .captcha-wrap p, .services-page .inquiry-fallback { font-size: 14px; line-height: 1.7; }
+.services-page .h-captcha { min-height: 144px; }
+.services-page .inquiry-status, .services-page .inquiry-error { line-height: 1.7; margin: 18px 0 0; }
+.services-page .inquiry-status { color: var(--forest); }
+.services-page .inquiry-error { color: #9B2424; }
+.services-page .inquiry-status:empty, .services-page .inquiry-error:empty { margin: 0; }
+.services-page .inquiry-panel button:not(:disabled) { cursor: pointer; }
+
+/* Field errors use text and accessible associations as well as color. */
+.services-page .field-error { margin: 0; color: #B42318; font-size: 14px; line-height: 1.6; }
+.services-page .field-error[hidden] { display: none; }
+.services-page .field [aria-invalid="true"] { border-color: #B42318; background: #FEF3F2; }
+
+/* Include programmatic focus on invalid controls as well as keyboard focus. */
+.services-page .field [aria-invalid="true"]:focus {
+  outline: 3px solid #B42318;
+  outline-offset: 5px;
+}

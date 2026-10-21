@@ -31,7 +31,9 @@ The static `/services/` page uses `services/services.css` and `services/services
 
 The form sends AJAX requests to `https://api.web3forms.com/submit`, using FormData converted to JSON. The `email` field supplies default Reply-To. Subject and sender name come from the founder-configured dashboard; no duplicate hidden overrides are included. Auto responder is disabled and no redirect is configured.
 
-The public frontend access-key placeholder is in `services/index.html`, in the hidden `name="access_key"` input. Search for `CHIMJA_WEB3FORMS_ACCESS_KEY_REPLACE_ME` and replace only that input's value with the founder's key locally. Do not replace the placeholder guard in JavaScript or paste the real key into documentation or logs. Submission is blocked while the placeholder or an empty key remains.
+The public frontend access key is in `services/index.html`, in the hidden `name="access_key"` input. The current checkout contains a non-placeholder value; its provider validity and dashboard settings require separate verification. This static site does not load environment variables or distinguish local, preview, and production hosts. No build-time or runtime environment variable is required. Deployment must serve the reviewed HTML and JavaScript together. There is no deployment automation in this repository.
+
+For an unconfigured copy, replace only the hidden input's value with the founder-approved public form key. Do not change the `CHIMJA_WEB3FORMS_ACCESS_KEY_REPLACE_ME` guard in JavaScript or paste key values into documentation or logs. Submission is blocked while that placeholder or an empty key remains. The initial HTML provides a customer-facing email fallback until JavaScript enables a configured form; it also remains safe if JavaScript fails. A nonempty key only enables the client flow; it does not prove provider acceptance or email delivery.
 
 ### CAPTCHA and local testing
 

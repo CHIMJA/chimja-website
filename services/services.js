@@ -90,7 +90,7 @@
     error.textContent = '';
     validationSummaryActive = false;
     if (!configured()) {
-      error.textContent = 'Online inquiries are not configured yet. Please email hello@chimja.com.';
+      error.textContent = 'Online inquiries are currently unavailable. Please email hello@chimja.com.';
       return;
     }
     const invalidFields = validationFields.filter(field => {

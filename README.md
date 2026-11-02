@@ -1,56 +1,34 @@
-# CHIMJA Website v1.2 — Final
+# CHIMJA Website
 
-Public contact routing:
-- General / partnerships: hello@chimja.com
-- Founder: krishnarjun@chimja.com
-- Product support: support@chimja.com
-- Billing: billing@chimja.com
-- Careers: careers@chimja.com
-- Privacy / legal / admin: admin@chimja.com
+CHIMJA's existing website, AI project assistant and consent-based inquiry follow-ups. Node.js 24, Next.js, Neon Postgres, Vercel AI Gateway, Resend and Vercel Workflow.
 
-Stable product URLs:
-- Marketing: https://chimja.com/
-- Support: https://chimja.com/support/
-- Privacy: https://chimja.com/privacy/
-- Terms: https://chimja.com/terms/
+## Development
 
-Local preview:
-python3 -m http.server 8080
+```sh
+npm ci
+npm test
+npm run build
+npm run dev
+```
 
+Live public pages are under `public/`. API routes and workflow entry points are under `app/`; follow-ups are under `workflows/`. Keep all secrets in Vercel environment variables. No credentials are included in this repository.
 
-## v1.2 final lock
-- Hero engineering plate now uses `EST. 2026` instead of unexplained `01`.
-- Removed `ROOTS / 01` from the Our Roots artwork for a cleaner, timeless composition.
+## Runtime configuration
 
+Production requires DATABASE_URL, AI_GATEWAY_API_KEY, RESEND_API_KEY, RESEND_WEBHOOK_SECRET, TURNSTILE_SITE_KEY and TURNSTILE_SECRET_KEY. Enable public inquiry handling with CHIMJA_LIVE_ENABLED=true. Turnstile action is inquiry; permitted production hostnames are chimja.com and www.chimja.com. Resend email.received webhook points to https://chimja.com/api/resend. Retain its exact endpoint signing secret. Do not reuse preview signing secrets.
 
-## Global Services Inquiry Form
+Vercel project: CHIMJA / chimja-website. Keep Vercel Authentication enabled for all deployments except custom domains. The dashboard https://chimja-website-chimja.vercel.app/live.html relies on that setting and is available only after Vercel sign-in. Public domain API responses contain no inquiry records.
 
-The static `/services/` page uses `services/services.css` and `services/services.js`. Shared CSS/JavaScript include targeted accessibility improvements: footer and number contrast, progressive navigation with Escape and desktop-resize state handling, and reveal content that remains visible without JavaScript. No build step or dependency installation is required.
+Production stores records in chimja_live_* tables; preview uses chimja_test_* tables and restricts delivery to the approved founder inbox. Acknowledgment is followed by emails at days 2 and 5 in production, or minutes 3 and 8 in preview. A signed reply event or opt-out stops remaining follow-ups; an in-flight email cannot be recalled. Provider acceptance does not prove inbox delivery. Uncertain sends require review, with no blind resend.
 
-### Web3Forms configuration
+## Visitor experience
 
-The form sends AJAX requests to `https://api.web3forms.com/submit`, using FormData converted to JSON. The `email` field supplies default Reply-To. Subject and sender name come from the founder-configured dashboard; no duplicate hidden overrides are included. Auto responder is disabled and no redirect is configured.
+Bottom-anchored composer, separate editable review form with contact autofill, structured requirements extraction and explicit consent. Chat cannot send an email merely because a visitor says yes. After submission the visitor can keep chatting; the submitted brief is read-only and changes should be requested by replying to the acknowledgment email. New chat starts a separate inquiry. Duplicate submission is blocked.
 
-The public frontend access key is in `services/index.html`, in the hidden `name="access_key"` input. The current checkout contains a non-placeholder value; its provider validity and dashboard settings require separate verification. This static site does not load environment variables or distinguish local, preview, and production hosts. No build-time or runtime environment variable is required. Deployment must serve the reviewed HTML and JavaScript together. There is no deployment automation in this repository.
+## Verification and operations
 
-For an unconfigured copy, replace only the hidden input's value with the founder-approved public form key. Do not change the `CHIMJA_WEB3FORMS_ACCESS_KEY_REPLACE_ME` guard in JavaScript or paste key values into documentation or logs. Submission is blocked while that placeholder or an empty key remains. The initial HTML provides a customer-facing email fallback until JavaScript enables a configured form; it also remains safe if JavaScript fails. A nonempty key only enables the client flow; it does not prove provider acceptance or email delivery.
+19 automated tests passed. Founder confirmed live acknowledgment, scheduled follow-ups, manual stop, reply cancellation and the corrected chat/intake experience. Accelerated preview tests covered timing; production day-2/day-5 elapsed delivery is not yet independently verified. Live API privacy and authenticated-dashboard boundaries were checked. Tests/inquiry.mjs preserves the earlier static service-form browser harness, adjusted for public/; it requires its documented external Chrome setup and is not included in npm test.
 
-### CAPTCHA and local testing
+Initial limits: 50 model calls/day, 20 production inquiries/day, 2 inquiries/email/day, 3 creates/IP/day, 30 chat/brief requests/IP/day. AI responses may contain mistakes; visitors review briefs before submitting. Existing record content is not rewritten by code releases. Delivery/bounce events and inbound message body processing are not implemented.
 
-The form includes Web3Forms' documented `.h-captcha` / `data-captcha="true"` integration and `https://web3forms.com/client/script.js`. Compact size is requested for narrow screens. The dashboard must continue to require hCaptcha. The script reads the generated `h-captcha-response` token and submits it with the form; CAPTCHA reset uses the hCaptcha API and must be checked in a real browser. No custom site key is needed.
-
-Run `python3 -m http.server 8080 --bind 127.0.0.1` from the repository and open `http://127.0.0.1:8080/services/`. Check 320, 375, 390, 430, 768, 1024, and 1440px widths, keyboard focus, native validation, FAQs, reduced motion, and disabled-JavaScript content. CAPTCHA and Google Fonts request third-party resources. Never send a live request with the placeholder.
-
-Use mocked fetch responses to check success (`success: true` plus successful HTTP status), API rejection, malformed responses, network failure, timeout, and duplicate-submit prevention. Failure retains entered fields; only confirmed success resets the form. Timeout does not prove the provider failed to receive the inquiry; there is no automatic retry.
-
-### Real submission verification and release prerequisites
-
-After inserting the key and obtaining authorization for a real test, use non-sensitive test details and complete hCaptcha. Verify the successful response, field reset, CAPTCHA reset and a second CAPTCHA completion. Confirm the notification arrives at `hello@chimja.com`, has the dashboard-configured subject/sender, includes the expected fields, and Reply-To matches the test email. Test blocked/expired CAPTCHA and provider/network failure without bypassing protection. Check browser console/network and ensure neither key nor personal information is logged. Do not equate an API success with confirmed inbox delivery.
-
-Browser layout, screen-reader behavior, CAPTCHA rendering/reset and real submission/email receipt require separate verification; mocked tests cannot certify them. Do not deploy until the founder reviews the changes and these checks are complete.
-
-### Privacy and operational limits
-
-The privacy policy discloses Web3Forms, CAPTCHA/spam prevention, voluntary inquiry fields, and inquiry processing. The founder reports the Free plan has 250 monthly submissions, Basic spam protection with advanced spam filtering enabled, no domain restriction, and one-year provider submission retention. Dashboard settings were supplied by the founder and were not independently inspected. Notification emails may be retained separately; one-year provider retention is not a promise that all copies are automatically deleted. Avoid sensitive information. Frontend validation is usability assistance, not an abuse boundary; CAPTCHA and spam filters do not eliminate all spam. Monitor quota and delivery, and keep the email fallback available.
-
-No commit, push, deployment, infrastructure change, or real submission is part of this local checkpoint.
+Historical website documentation: docs/website-v1.2.md and WEB-001-report.md. Deployment history and the tested source checkpoint are retained separately. This branch imports the code deployed on 2 November 2026.

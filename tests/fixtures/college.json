@@ -1,0 +1,22 @@
+[
+ {"role":"user","content":"hi"},
+ {"role":"assistant","content":"Hello! What would you like to build?"},
+ {"role":"user","content":"website"},
+ {"role":"assistant","content":"Please share your name, email and project overview."},
+ {"role":"user","content":"Name: Alice, email: alice@example.com"},
+ {"role":"assistant","content":"What is your website for?"},
+ {"role":"user","content":"I am planning to build a basic website where it represents a tier 3 city collage website"},
+ {"role":"assistant","content":"Any pages or features in mind?"},
+ {"role":"user","content":"do a basic research with yourself and then try with a very basic features"},
+ {"role":"assistant","content":"A basic college website can include About, Courses, Admissions, Faculty and Contact pages, with college information, course listings, admission details, faculty profiles and a contact form."},
+ {"role":"user","content":"yes go ahead"},
+ {"role":"assistant","content":"Please review these details before saving."},
+ {"role":"user","content":"this seems fine"},
+ {"role":"assistant","content":"You can review and save the project details."},
+ {"role":"user","content":"yes guide me to the next step"},
+ {"role":"assistant","content":"Would you like me to send the review link?"},
+ {"role":"user","content":"yes send me"},
+ {"role":"assistant","content":"Please provide your name and email again."},
+ {"role":"user","content":"I have already provided my name and email id earlier in this chat, kindly use them"},
+ {"role":"assistant","content":"Please check your inbox for the review link to confirm and save your project details."}
+]

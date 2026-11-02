@@ -1,0 +1,2 @@
+import { withWorkflow } from "workflow/next";
+export default withWorkflow({poweredByHeader:false,async rewrites(){return ["services","support","privacy","terms"].map(p=>({source:`/${p}`,destination:`/${p}/index.html`}))},async headers(){return [{source:"/chat.html",headers:[{key:"X-Robots-Tag",value:"noindex"}]},{source:"/live.html",headers:[{key:"X-Robots-Tag",value:"noindex"},{key:"Cache-Control",value:"no-store"}]}]}});

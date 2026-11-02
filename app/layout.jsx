@@ -1,0 +1,1 @@
+export const metadata={title:"CHIMJA · Private live test",robots:{index:false,follow:false}};export default function Layout({children}){return <html lang="en"><body>{children}</body></html>}

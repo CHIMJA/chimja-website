@@ -32,3 +32,5 @@ Bottom-anchored composer, separate editable review form with contact autofill, s
 Initial limits: 50 model calls/day, 20 production inquiries/day, 2 inquiries/email/day, 3 creates/IP/day, 30 chat/brief requests/IP/day. AI responses may contain mistakes; visitors review briefs before submitting. Existing record content is not rewritten by code releases. Delivery/bounce events and inbound message body processing are not implemented.
 
 Historical website documentation: docs/website-v1.2.md and WEB-001-report.md. Deployment history and the tested source checkpoint are retained separately. This branch imports the code deployed on 2 November 2026.
+
+See [website milestones](docs/milestones.md) for release history and verification records.

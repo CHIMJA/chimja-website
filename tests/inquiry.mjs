@@ -5,7 +5,7 @@ import http from 'node:http';
 import { readFile, writeFile } from 'node:fs/promises';
 import assert from 'node:assert/strict';
 
-const root = new URL('../', import.meta.url);
+const root = new URL('../public/', import.meta.url);
 const server = http.createServer(async (req, res) => {
   try {
     const url = new URL(req.url, 'http://localhost');

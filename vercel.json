@@ -1,0 +1,7 @@
+{
+  "framework": "nextjs",
+  "regions": [
+    "iad1"
+  ],
+  "installCommand": "npm ci --ignore-scripts"
+}
